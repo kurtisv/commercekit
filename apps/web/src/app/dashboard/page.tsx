@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { EcosystemNotificationPanel } from "@/components/ecosystem/notification-panel";
 import { demoOrders } from "@/data/commerce";
 import { prisma } from "@/lib/db";
+import { getIncomingEcosystemEvents } from "@/lib/ecosystem";
 import { formatCurrency } from "@/lib/money";
 
 async function getDashboardData() {
@@ -30,7 +31,10 @@ async function getDashboardData() {
 }
 
 export default async function DashboardPage() {
-  const data = await getDashboardData();
+  const [data, projectEvents] = await Promise.all([
+    getDashboardData(),
+    getIncomingEcosystemEvents("commercekit", undefined, 6),
+  ]);
   const stats = [
     { label: "Revenue tracked", value: formatCurrency(data.revenue), icon: ShoppingBag },
     { label: "Active orders", value: String(data.orders.length), icon: Truck },
@@ -67,6 +71,37 @@ export default async function DashboardPage() {
         <div className="mt-8">
           <EcosystemNotificationPanel appKey="commercekit" />
         </div>
+
+        <section className="mt-8 rounded-lg border bg-card">
+          <div className="border-b p-5">
+            <h2 className="text-xl font-semibold">Commandes liees aux projets</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Les projets ClientHub deviennent des services, kits ou commandes vendables.
+            </p>
+          </div>
+          <div className="divide-y">
+            {projectEvents.map((event) => (
+              <article key={event.id} className="grid gap-3 p-5 md:grid-cols-[1fr_auto]">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="border bg-background px-2 py-1 text-xs font-semibold">{event.sourceApp}</span>
+                    <span className="font-mono text-xs text-muted-foreground">{event.flowId}</span>
+                  </div>
+                  <h3 className="mt-3 font-semibold">{event.customerName ?? "Client ecosysteme"}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{event.description ?? event.title}</p>
+                </div>
+                <span className="self-center rounded-full bg-secondary px-3 py-1 text-xs font-semibold">
+                  {event.eventType}
+                </span>
+              </article>
+            ))}
+            {projectEvents.length === 0 ? (
+              <p className="p-5 text-sm text-muted-foreground">
+                Aucun projet entrant pour l'instant. ClientHub alimentera cette file quand un projet sera pret a vendre.
+              </p>
+            ) : null}
+          </div>
+        </section>
 
         <section className="mt-8 rounded-lg border bg-card">
           <div className="border-b p-5">

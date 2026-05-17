@@ -12,6 +12,11 @@ export async function createDemoOrder(formData: FormData) {
   const customerName = String(formData.get("customerName") ?? "").trim();
   const customerEmail = String(formData.get("customerEmail") ?? "").trim();
   const customerCompany = String(formData.get("customerCompany") ?? "").trim();
+  const flowId = String(formData.get("flowId") ?? "").trim() || undefined;
+  const sourceApp = String(formData.get("sourceApp") ?? "").trim() || undefined;
+  const sourceEventId = String(formData.get("sourceEventId") ?? "").trim() || undefined;
+  const projectId = String(formData.get("projectId") ?? "").trim() || undefined;
+  const projectName = String(formData.get("projectName") ?? "").trim() || undefined;
 
   if (!customerName || !customerEmail) {
     redirect("/checkout?error=missing-customer");
@@ -65,6 +70,17 @@ export async function createDemoOrder(formData: FormData) {
         customerCompany: customerCompany || null,
         status: "PENDING",
         ...totals,
+        flowId,
+        sourceApp,
+        sourceEventId,
+        projectId,
+        projectName,
+        contextJson: {
+          sourceApp,
+          sourceEventId,
+          projectId,
+          projectName,
+        },
         items: {
           create: selected.map((item, index) => ({
             productId: products[index].id,
@@ -78,6 +94,7 @@ export async function createDemoOrder(formData: FormData) {
     });
 
     await publishEcosystemEvent({
+      flowId,
       sourceApp: "commercekit",
       targetApps: ["supportdesk-lite", "api-meter"],
       eventType: "order.created",
@@ -91,6 +108,9 @@ export async function createDemoOrder(formData: FormData) {
         orderNumber: order.orderNumber,
         customerCompany,
         totalCents: order.totalCents,
+        projectId,
+        projectName,
+        flowId,
       },
       priority: "NORMAL",
       actionLabel: "Voir la commande",
