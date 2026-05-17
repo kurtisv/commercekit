@@ -14,7 +14,7 @@ import {
 
 import { MarketingPageShell } from "@/components/marketing/page-shell";
 import { Button } from "@/components/ui/button";
-import { demoProducts, productStats } from "@/data/commerce";
+import { demoProducts, ecosystemSignals, productStats } from "@/data/commerce";
 import { getCurrentLocale } from "@/lib/locale";
 import { formatCurrency } from "@/lib/money";
 
@@ -47,6 +47,11 @@ const copy = {
       "La confirmation publique donne un suivi partageable.",
       "Le dashboard montre ce qui doit etre prepare, expedie ou rembourse.",
     ],
+    ecosystemTitle: "CommerceKit ne vend pas dans le vide.",
+    ecosystemText:
+      "Les commandes utilisent les memes clients que les autres modules KV Portfolio: un projet suivi dans ClientHub, un atelier gere dans EventPass ou un ticket prioritaire dans SupportDesk peut devenir un achat CommerceKit.",
+    ecosystemSource: "Source",
+    ecosystemOutcome: "Resultat commerce",
   },
   en: {
     eyebrow: "Project 6 - Stripe-ready commerce",
@@ -76,6 +81,11 @@ const copy = {
       "The public confirmation gives a shareable status page.",
       "The dashboard shows what needs to be prepared, shipped, or refunded.",
     ],
+    ecosystemTitle: "CommerceKit does not sell in isolation.",
+    ecosystemText:
+      "Orders use the same customers as the other KV Portfolio modules: a ClientHub project, an EventPass workshop, or a priority SupportDesk request can become a CommerceKit purchase.",
+    ecosystemSource: "Source",
+    ecosystemOutcome: "Commerce result",
   },
 };
 
@@ -207,6 +217,35 @@ export default async function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[0.82fr_1.18fr]">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+              KV Portfolio ecosystem
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-normal text-balance sm:text-5xl">
+              {t.ecosystemTitle}
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-muted-foreground">{t.ecosystemText}</p>
+          </div>
+          <div className="grid gap-3">
+            {ecosystemSignals.map((signal) => (
+              <div key={`${signal.source}-${signal.actor}`} className="rounded-lg border bg-card p-5 shadow-sm">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">{t.ecosystemSource}</p>
+                    <p className="mt-1 font-semibold">{signal.source}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{signal.actor} - {signal.action[locale]}</p>
+                  </div>
+                  <div className="rounded-lg bg-muted px-4 py-3 text-sm font-medium">
+                    <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">{t.ecosystemOutcome}</p>
+                    <p className="mt-1">{signal.outcome[locale]}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
