@@ -10,12 +10,13 @@ const copy = {
     eyebrow: "Etude de cas",
     title: "CommerceKit montre le cote commerce et Stripe-ready du boilerplate.",
     intro:
-      "Le projet prouve qu'une meme fondation peut devenir un mini-commerce avec catalogue, checkout, commandes et operations sans ressembler aux autres portfolios.",
+      "Le projet prouve qu'une meme fondation peut devenir un mini-commerce relie aux autres modules: portail client, evenements, support et usage API.",
     points: [
       "Catalogue produit structure avec prix en cents et inventaire.",
       "Checkout demo avec calculs de taxes, livraison et total.",
       "Confirmation publique par token pour montrer un parcours client.",
       "Dashboard operations pour commandes, revenu et fulfillment.",
+      "Donnees alignees avec les memes clients et flux que ClientHub, EventPass, SupportDesk Lite et API Meter.",
       "FR/EN, repo public, branches lisibles et tests avant deploiement.",
     ],
     cta: "Tester le checkout",
@@ -24,12 +25,13 @@ const copy = {
     eyebrow: "Case study",
     title: "CommerceKit shows the commerce and Stripe-ready side of the boilerplate.",
     intro:
-      "The project proves that one foundation can become a mini commerce product with catalog, checkout, orders, and operations without looking like the other portfolio builds.",
+      "The project proves that one foundation can become a mini commerce product connected to the other modules: client portal, events, support, and API usage.",
     points: [
       "Structured product catalog with cents-based prices and inventory.",
       "Demo checkout with tax, shipping, and total calculations.",
       "Public token confirmation to show a customer journey.",
       "Operations dashboard for orders, revenue, and fulfillment.",
+      "Data aligned with the same customers and flows as ClientHub, EventPass, SupportDesk Lite, and API Meter.",
       "FR/EN, public repo, readable branches, and tests before deployment.",
     ],
     cta: "Test checkout",

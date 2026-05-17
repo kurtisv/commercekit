@@ -1,10 +1,10 @@
 export const demoProducts = [
   {
     id: "ck-prod-001",
-    slug: "checkout-launch-kit",
-    name: "Checkout Launch Kit",
-    category: "Checkout",
-    description: "A guided checkout package for teams that need a polished purchase flow fast.",
+    slug: "client-launch-kit",
+    name: "Client Launch Kit",
+    category: "Delivery",
+    description: "A productized launch kit purchased after a ClientHub project reaches final QA.",
     priceCents: 18900,
     inventory: 28,
     featured: true,
@@ -12,10 +12,10 @@ export const demoProducts = [
   },
   {
     id: "ck-prod-002",
-    slug: "retail-ops-dashboard",
-    name: "Retail Ops Dashboard",
-    category: "Operations",
-    description: "Order, customer, and fulfillment dashboards shaped for a small commerce team.",
+    slug: "workshop-seat-bundle",
+    name: "Workshop Seat Bundle",
+    category: "Events",
+    description: "Reserved seats and materials for teams attending an EventPass training session.",
     priceCents: 24900,
     inventory: 16,
     featured: true,
@@ -23,10 +23,10 @@ export const demoProducts = [
   },
   {
     id: "ck-prod-003",
-    slug: "email-receipt-system",
-    name: "Email Receipt System",
-    category: "Email",
-    description: "Resend-ready receipt and status messages that keep customers informed.",
+    slug: "support-priority-pack",
+    name: "Support Priority Pack",
+    category: "Support",
+    description: "Priority support credits for clients who need faster follow-up after delivery.",
     priceCents: 12900,
     inventory: 34,
     featured: false,
@@ -34,10 +34,10 @@ export const demoProducts = [
   },
   {
     id: "ck-prod-004",
-    slug: "catalog-structure-pack",
-    name: "Catalog Structure Pack",
-    category: "Catalog",
-    description: "Product cards, filters, detail pages, and conversion-focused merchandising blocks.",
+    slug: "api-usage-credit",
+    name: "API Usage Credit",
+    category: "Technical",
+    description: "Prepaid API usage for partner integrations tracked through API Meter.",
     priceCents: 15900,
     inventory: 22,
     featured: false,
@@ -52,7 +52,7 @@ export const demoOrders = [
     publicToken: "commercekit-demo-order",
     customerName: "Mara Chen",
     customerEmail: "mara@example.com",
-    customerCompany: "Mile End Goods",
+    customerCompany: "Northline Studio",
     status: "PAID",
     subtotalCents: 43800,
     shippingCents: 0,
@@ -66,7 +66,7 @@ export const demoOrders = [
     publicToken: "commercekit-demo-fulfillment",
     customerName: "Elliot Moore",
     customerEmail: "elliot@example.com",
-    customerCompany: "Atelier Supply",
+    customerCompany: "Atelier Boutique",
     status: "FULFILLING",
     subtotalCents: 28800,
     shippingCents: 1200,
@@ -81,6 +81,45 @@ export const productStats = [
   { label: "Checkout paths", value: "2" },
   { label: "Order states", value: "6" },
   { label: "Tests inherited", value: "50" },
+];
+
+export const ecosystemSignals = [
+  {
+    source: "ClientHub",
+    actor: "Mara Chen",
+    action: {
+      fr: "Projet Northline en QA finale",
+      en: "Northline project in final QA",
+    },
+    outcome: {
+      fr: "Achat du Client Launch Kit",
+      en: "Purchased the Client Launch Kit",
+    },
+  },
+  {
+    source: "EventPass",
+    actor: "Elliot Moore",
+    action: {
+      fr: "Inscription a Design Ops Night",
+      en: "Registered for Design Ops Night",
+    },
+    outcome: {
+      fr: "Bundle atelier en fulfillment",
+      en: "Workshop bundle in fulfillment",
+    },
+  },
+  {
+    source: "SupportDesk Lite",
+    actor: "Nadia Fortin",
+    action: {
+      fr: "Demande de support apres livraison",
+      en: "Support request after delivery",
+    },
+    outcome: {
+      fr: "Credits support prioritaire disponibles",
+      en: "Priority support credits available",
+    },
+  },
 ];
 
 export type DemoProduct = (typeof demoProducts)[number];
