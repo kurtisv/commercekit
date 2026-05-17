@@ -47,6 +47,47 @@ async function main() {
       priceCents: 12500,
     },
   });
+
+  const products = [
+    {
+      slug: "checkout-launch-kit",
+      name: "Checkout Launch Kit",
+      category: "Checkout",
+      description: "A guided checkout package for teams that need a polished purchase flow fast.",
+      priceCents: 18900,
+      inventory: 28,
+      featured: true,
+      color: "#2e3f34",
+    },
+    {
+      slug: "retail-ops-dashboard",
+      name: "Retail Ops Dashboard",
+      category: "Operations",
+      description: "Order, customer, and fulfillment dashboards shaped for a small commerce team.",
+      priceCents: 24900,
+      inventory: 16,
+      featured: true,
+      color: "#b76935",
+    },
+    {
+      slug: "email-receipt-system",
+      name: "Email Receipt System",
+      category: "Email",
+      description: "Resend-ready receipt and status messages that keep customers informed.",
+      priceCents: 12900,
+      inventory: 34,
+      featured: false,
+      color: "#f1d59b",
+    },
+  ];
+
+  for (const product of products) {
+    await prisma.commerceProduct.upsert({
+      where: { slug: product.slug },
+      update: product,
+      create: product,
+    });
+  }
 }
 
 main()
