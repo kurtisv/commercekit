@@ -253,5 +253,56 @@ export async function createOrderFromEcosystemEvent(formData: FormData) {
     actionUrl: `/dashboard/orders/${order.id}`,
   });
 
+  const downstreamEvent = {
+    flowId: event.flowId,
+    sourceApp: "commercekit",
+    eventType: "order.created",
+    entityType: "order",
+    entityId: order.id,
+    customerName,
+    customerEmail,
+    title: "Commande CommerceKit creee depuis le parcours reel",
+    description: `${customerName} a une commande ${order.orderNumber} liee a ${projectName}.`,
+    payload: {
+      orderNumber: order.orderNumber,
+      totalCents: order.totalCents,
+      projectId,
+      projectName,
+      sourceApp: event.sourceApp,
+      sourceEventId: event.id,
+      flowId: event.flowId,
+    },
+    priority: "NORMAL",
+  };
+
+  await Promise.all([
+    sendEcosystemHandoff(process.env.EVENTPASS_INGEST_URL ?? "https://eventpass-nine.vercel.app/api/ecosystem/ingest", {
+      ...downstreamEvent,
+      actionLabel: "Creer le billet EventPass",
+      actionUrl: "/dashboard",
+    }),
+    sendEcosystemHandoff(process.env.SUPPORTDESK_INGEST_URL ?? "https://supportdesk-lite-jet.vercel.app/api/ecosystem/ingest", {
+      ...downstreamEvent,
+      actionLabel: "Creer le ticket SupportDesk",
+      actionUrl: "/dashboard",
+    }),
+    sendEcosystemHandoff(process.env.API_METER_INGEST_URL ?? "https://api-meter.vercel.app/api/ecosystem/ingest", downstreamEvent),
+  ]);
+
   redirect(`/dashboard/orders/${order.id}`);
+}
+
+async function sendEcosystemHandoff(url: string, body: Record<string, unknown>) {
+  if (!body.flowId) return;
+
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      cache: "no-store",
+    });
+  } catch (error) {
+    console.error("Ecosystem handoff failed", error);
+  }
 }
