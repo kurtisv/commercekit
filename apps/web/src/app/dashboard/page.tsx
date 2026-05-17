@@ -3,6 +3,7 @@ import { ArrowRight, PackageCheck, ShoppingBag, Truck } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { EcosystemNotificationPanel } from "@/components/ecosystem/notification-panel";
+import { createOrderFromEcosystemEvent } from "@/app/actions/commerce";
 import { demoOrders } from "@/data/commerce";
 import { prisma } from "@/lib/db";
 import { getIncomingEcosystemEvents } from "@/lib/ecosystem";
@@ -81,7 +82,7 @@ export default async function DashboardPage() {
           </div>
           <div className="divide-y">
             {projectEvents.map((event) => (
-              <article key={event.id} className="grid gap-3 p-5 md:grid-cols-[1fr_auto]">
+              <article key={event.id} className="grid gap-4 p-5 md:grid-cols-[1fr_auto]">
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="border bg-background px-2 py-1 text-xs font-semibold">{event.sourceApp}</span>
@@ -90,9 +91,17 @@ export default async function DashboardPage() {
                   <h3 className="mt-3 font-semibold">{event.customerName ?? "Client ecosysteme"}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{event.description ?? event.title}</p>
                 </div>
-                <span className="self-center rounded-full bg-secondary px-3 py-1 text-xs font-semibold">
-                  {event.eventType}
-                </span>
+                <div className="flex flex-col items-start gap-3 self-center md:items-end">
+                  <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold">
+                    {event.eventType}
+                  </span>
+                  <form action={createOrderFromEcosystemEvent}>
+                    <input type="hidden" name="eventId" value={event.id} />
+                    <button className="rounded-md bg-primary px-3 py-2 text-xs font-semibold text-primary-foreground hover:opacity-90">
+                      Creer la commande liee
+                    </button>
+                  </form>
+                </div>
               </article>
             ))}
             {projectEvents.length === 0 ? (

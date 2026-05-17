@@ -28,15 +28,15 @@ export default async function CheckoutPage() {
           <form action={createDemoOrder} className="mt-8 grid gap-4 rounded-lg border bg-card p-5">
             <div className="grid gap-2">
               <Label htmlFor="customerName">{locale === "fr" ? "Nom" : "Name"}</Label>
-              <Input id="customerName" name="customerName" defaultValue="Mara Chen" required />
+              <Input id="customerName" name="customerName" placeholder={locale === "fr" ? "Nom du client" : "Customer name"} required />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="customerEmail">Email</Label>
-              <Input id="customerEmail" name="customerEmail" type="email" defaultValue="mara@example.com" required />
+              <Input id="customerEmail" name="customerEmail" type="email" placeholder="client@example.com" required />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="customerCompany">{locale === "fr" ? "Entreprise" : "Company"}</Label>
-              <Input id="customerCompany" name="customerCompany" defaultValue="Mile End Goods" />
+              <Input id="customerCompany" name="customerCompany" placeholder={locale === "fr" ? "Entreprise" : "Company"} />
             </div>
             <Button type="submit" size="lg">
               {locale === "fr" ? "Creer une commande demo" : "Create demo order"}
