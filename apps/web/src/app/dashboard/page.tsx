@@ -11,6 +11,12 @@ import { formatCurrency } from "@/lib/money";
 
 const timeline = ["Luma Studio", "QuotePilot", "ReserveFlow", "ClientHub", "CommerceKit", "EventPass", "SupportDesk Lite", "API Meter"];
 
+const serviceOffers = [
+  ["Launch kit", "Service productise issu du projet ClientHub", "$1,200"],
+  ["Workshop bundle", "Commande qui peut ouvrir EventPass", "$850"],
+  ["Support credits", "Suivi post-livraison vers SupportDesk Lite", "$300"],
+];
+
 async function getDashboardData() {
   try {
     const [orders, products] = await Promise.all([
@@ -46,22 +52,30 @@ export default async function DashboardPage() {
   ];
 
   return (
-    <main className="px-6 py-10 text-foreground">
+    <main className="bg-[linear-gradient(180deg,#fffaf0_0%,#f8fafc_52%,#ffffff_100%)] px-6 py-10 text-foreground">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="mb-8 grid gap-6 lg:grid-cols-[1fr_0.85fr] lg:items-end">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">Commerce operations</p>
-            <p className="mt-2 inline-flex rounded-md border bg-secondary px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+            <p className="inline-flex rounded-md border bg-white px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
               KV Portfolio Ecosystem - Demo Mode
             </p>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">Commerce operations</p>
             <h1 className="mt-3 text-4xl font-semibold tracking-normal">Order cockpit</h1>
             <p className="mt-3 max-w-2xl text-muted-foreground">
-              A recruiter-facing admin view that shows how the starter can become a small commerce operations app.
+              CommerceKit montre le cote revenus du boilerplate: produits, services, commandes,
+              statuts, client lie et signaux envoyes vers support et API Meter.
             </p>
           </div>
-          <Button asChild>
-            <Link href="/dashboard/orders">View orders</Link>
-          </Button>
+          <section className="rounded-lg border bg-card p-5 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              Ce que tu peux tester ici
+            </p>
+            <div className="mt-3 grid gap-2 text-sm">
+              <p><span className="font-semibold">Recoit:</span> projet ClientHub pret a vendre.</p>
+              <p><span className="font-semibold">Transmet:</span> order.created vers SupportDesk Lite et API Meter.</p>
+              <p><span className="font-semibold">Prochain module:</span> EventPass pour un atelier ou SupportDesk pour le suivi.</p>
+            </div>
+          </section>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -89,6 +103,31 @@ export default async function DashboardPage() {
           </div>
         </section>
 
+        <section className="mt-8 rounded-lg border bg-card p-5 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                Productized offers
+              </p>
+              <h2 className="mt-2 text-xl font-semibold">Services vendables apres le projet</h2>
+            </div>
+            <Button asChild>
+              <Link href="/dashboard/orders">View orders</Link>
+            </Button>
+          </div>
+          <div className="mt-5 grid gap-3 md:grid-cols-3">
+            {serviceOffers.map(([title, text, price]) => (
+              <article key={title} className="rounded-md border bg-background p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="font-semibold">{title}</h3>
+                  <span className="rounded-full bg-secondary px-2.5 py-1 text-xs font-semibold">{price}</span>
+                </div>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="mt-8 rounded-lg border bg-card">
           <div className="border-b p-5">
             <h2 className="text-xl font-semibold">Commandes liees aux projets</h2>
@@ -106,6 +145,11 @@ export default async function DashboardPage() {
                   </div>
                   <h3 className="mt-3 font-semibold">{event.customerName ?? "Nom recu du formulaire"}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{event.description ?? event.title}</p>
+                  <div className="mt-4 grid gap-2 text-xs text-muted-foreground sm:grid-cols-3">
+                    <span className="rounded-md border bg-background px-3 py-2">Client lie</span>
+                    <span className="rounded-md border bg-background px-3 py-2">Service propose</span>
+                    <span className="rounded-md border bg-background px-3 py-2">Revenu tracke</span>
+                  </div>
                 </div>
                 <div className="flex flex-col items-start gap-3 self-center md:items-end">
                   <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold">
@@ -121,9 +165,12 @@ export default async function DashboardPage() {
               </article>
             ))}
             {projectEvents.length === 0 ? (
-              <p className="p-5 text-sm text-muted-foreground">
-                Aucun projet entrant pour l&apos;instant. ClientHub alimentera cette file quand un projet sera pret a vendre.
-              </p>
+              <div className="p-5">
+                <p className="rounded-md border bg-background p-4 text-sm text-muted-foreground">
+                  Aucun projet entrant pour l&apos;instant. Cree un projet dans ClientHub; CommerceKit affichera
+                  ensuite le client, le service lie, le montant et le meme flowId.
+                </p>
+              </div>
             ) : null}
           </div>
         </section>
