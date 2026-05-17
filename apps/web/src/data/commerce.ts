@@ -50,9 +50,9 @@ export const demoOrders = [
     id: "ck-order-001",
     orderNumber: "CK-2026-0001",
     publicToken: "commercekit-demo-order",
-    customerName: "Lead Luma entrant",
-    customerEmail: "lead@example.com",
-    customerCompany: "Northline Studio",
+    customerName: "Camille Moreau",
+    customerEmail: "camille.demo@kvportfolio.dev",
+    customerCompany: "Studio Moreau",
     status: "PAID",
     subtotalCents: 43800,
     shippingCents: 0,
@@ -86,7 +86,7 @@ export const productStats = [
 export const ecosystemSignals = [
   {
     source: "ClientHub",
-    actor: "Lead Luma entrant",
+    actor: "Camille Moreau",
     action: {
       fr: "Projet Northline en QA finale",
       en: "Northline project in final QA",
