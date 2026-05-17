@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, PackageCheck, ShoppingBag, Truck } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { EcosystemNotificationPanel } from "@/components/ecosystem/notification-panel";
 import { demoOrders } from "@/data/commerce";
 import { prisma } from "@/lib/db";
 import { formatCurrency } from "@/lib/money";
@@ -61,6 +62,10 @@ export default async function DashboardPage() {
               <p className="mt-3 text-2xl font-semibold">{stat.value}</p>
             </section>
           ))}
+        </div>
+
+        <div className="mt-8">
+          <EcosystemNotificationPanel appKey="commercekit" />
         </div>
 
         <section className="mt-8 rounded-lg border bg-card">

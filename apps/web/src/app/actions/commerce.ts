@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 
 import { demoProducts } from "@/data/commerce";
 import { prisma } from "@/lib/db";
+import { publishEcosystemEvent } from "@/lib/ecosystem";
 import { calculateOrderTotals } from "@/lib/money";
 
 export async function createDemoOrder(formData: FormData) {
@@ -74,6 +75,26 @@ export async function createDemoOrder(formData: FormData) {
           })),
         },
       },
+    });
+
+    await publishEcosystemEvent({
+      sourceApp: "commercekit",
+      targetApps: ["supportdesk-lite", "api-meter"],
+      eventType: "order.created",
+      entityType: "order",
+      entityId: order.id,
+      customerName,
+      customerEmail,
+      title: "Commande creee dans CommerceKit",
+      description: `${customerName} a cree la commande ${order.orderNumber}.`,
+      payload: {
+        orderNumber: order.orderNumber,
+        customerCompany,
+        totalCents: order.totalCents,
+      },
+      priority: "NORMAL",
+      actionLabel: "Voir la commande",
+      actionUrl: `/dashboard/orders/${order.id}`,
     });
 
     redirect(`/order/${order.publicToken}`);
