@@ -148,8 +148,9 @@ export async function createOrderFromEcosystemEvent(formData: FormData) {
   if (!event) return;
 
   const payload = payloadOf(event.payload);
-  const customerName = event.customerName || text(payload.customerName) || "Client ecosysteme";
-  const customerEmail = event.customerEmail || text(payload.customerEmail) || "client@ecosystem.local";
+  const customerName = event.customerName || text(payload.customerName) || text(payload.name) || "Nom recu du formulaire";
+  const customerEmail = event.customerEmail || text(payload.customerEmail) || text(payload.email);
+  if (!customerEmail) return;
   const projectId = text(payload.projectId) || event.entityId || undefined;
   const projectName = text(payload.projectName) || event.title;
   const quoteTotalCents = numberValue(payload.quoteTotalCents) ?? numberValue(payload.totalCents) ?? 0;
