@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --card: #ffffff;
-  --muted: #f4f4f5;
-  --muted-foreground: #52525b;
-  --border: #e4e4e7;
-  --primary: #18181b;
-  --primary-foreground: #fafafa;
-  --secondary: #f4f4f5;
-  --secondary-foreground: #18181b;
+  --background: #fbf7ef;
+  --foreground: #1b1b18;
+  --card: #fffdf7;
+  --muted: #efe6d6;
+  --muted-foreground: #6b6255;
+  --border: #ded0b9;
+  --primary: #2e3f34;
+  --primary-foreground: #fffdf7;
+  --secondary: #f1d59b;
+  --secondary-foreground: #241d12;
+  --accent: #b76935;
+  --accent-soft: #f9e8c9;
 }
 
 @theme inline {
@@ -24,26 +26,39 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --card: #111113;
-    --muted: #1f1f23;
-    --muted-foreground: #a1a1aa;
-    --border: #27272a;
-    --primary: #fafafa;
-    --primary-foreground: #18181b;
-    --secondary: #27272a;
-    --secondary-foreground: #fafafa;
-  }
+body {
+  background:
+    linear-gradient(180deg, rgba(249, 232, 201, 0.68), rgba(251, 247, 239, 0.94) 34rem),
+    var(--background);
+  color: var(--foreground);
 }
 
-body {
-  background: var(--background);
+::selection {
+  background: var(--accent-soft);
   color: var(--foreground);
+}
+
+.commerce-grid {
+  background:
+    linear-gradient(rgba(46, 63, 52, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 63, 52, 0.075) 1px, transparent 1px),
+    radial-gradient(circle at 14% 18%, rgba(183, 105, 53, 0.18), transparent 26rem),
+    radial-gradient(circle at 76% 28%, rgba(46, 63, 52, 0.13), transparent 28rem);
+  background-size: 42px 42px, 42px 42px, auto, auto;
+}
+
+.commerce-lift {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.commerce-lift:hover {
+  transform: translateY(-3px);
+  border-color: rgba(46, 63, 52, 0.45);
+  box-shadow: 0 16px 34px rgba(46, 63, 52, 0.11);
 }
