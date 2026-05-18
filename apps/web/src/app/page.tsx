@@ -9,16 +9,16 @@ import { getCurrentLocale } from "@/lib/locale";
 
 const copy = {
   fr: {
-    eyebrow: "Vitrine 3D - Commerce moderne",
-    title: "Une vitrine commerce qui transforme un catalogue en experience de marque.",
+    eyebrow: "Kit commerce premium 3D",
+    title: "Un flux commerce complet mis en scene comme un produit premium.",
     intro:
-      "CommerceKit sort du parcours synchronise et devient une demonstration visuelle autonome: hero 3D, produits superposes, checkout clair et preuve operationnelle.",
+      "CommerceKit montre la chaine complete en un seul hero: produit, checkout, paiement, commande et fulfillment sont lisibles comme un kit commercial pret a vendre.",
     primary: "Tester le checkout",
     secondary: "Voir le catalogue",
     sceneLabel: "Product stack",
-    proofTitle: "Le commerce est presente comme un objet visuel, pas seulement un dashboard.",
+    proofTitle: "Le commerce n est pas seulement montre. Il est mis en produit.",
     proof:
-      "Le recruteur voit rapidement catalogue, panier, confirmation, operations et structure Stripe-ready dans une interface plus memorable et plus premium.",
+      "Le recruteur comprend immediatement qu il ne s agit pas d une simple vitrine: CommerceKit couvre le packaging produit, le passage au checkout, le statut paid et l execution fulfillment dans une meme narration.",
     modules: [
       { title: "Catalogue", text: "Produits actifs, inventaire, prix en cents et categories.", icon: Boxes },
       { title: "Checkout", text: "Flux demo clair avec totaux, taxes, livraison et futur Stripe Checkout.", icon: CreditCard },
@@ -29,16 +29,16 @@ const copy = {
     proofButton: "Voir la preuve technique",
   },
   en: {
-    eyebrow: "3D showcase - Modern commerce",
-    title: "A commerce showcase that turns a catalog into a brand experience.",
+    eyebrow: "3D premium commerce kit",
+    title: "A complete commerce flow staged like a premium product kit.",
     intro:
-      "CommerceKit leaves the synchronized path and becomes a standalone visual demo: 3D hero, layered products, clear checkout, and operational proof.",
+      "CommerceKit shows the whole chain in one hero: product, checkout, payment, order, and fulfillment read as one sellable commerce system.",
     primary: "Test checkout",
     secondary: "View catalog",
     sceneLabel: "Product stack",
-    proofTitle: "Commerce is presented as a visual object, not only a dashboard.",
+    proofTitle: "Commerce is not only displayed. It is productized.",
     proof:
-      "Recruiters can quickly see catalog, cart, confirmation, operations, and Stripe-ready structure in a more memorable premium interface.",
+      "Recruiters can immediately see that this is more than a storefront: CommerceKit covers product packaging, the checkout handoff, paid order state, and fulfillment execution in a single narrative.",
     modules: [
       { title: "Catalog", text: "Active products, inventory, prices in cents, and categories.", icon: Boxes },
       { title: "Checkout", text: "Clear demo flow with totals, tax, shipping, and future Stripe Checkout.", icon: CreditCard },

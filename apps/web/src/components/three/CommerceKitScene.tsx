@@ -12,7 +12,11 @@ const CommerceKitSceneCanvas = dynamic(() => import("./CommerceKitSceneCanvas"),
 
 export function CommerceKitScene() {
   return (
-    <ThreeSceneShell label="CommerceKit 3D commerce operations flow" fallback={<CommerceKitSceneFallback />}>
+    <ThreeSceneShell
+      label="CommerceKit premium commerce kit"
+      fallback={<CommerceKitSceneFallback />}
+      className="h-[420px] sm:h-[460px] lg:h-[520px]"
+    >
       <CommerceKitSceneCanvas />
     </ThreeSceneShell>
   );
