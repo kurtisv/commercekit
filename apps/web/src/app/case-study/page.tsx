@@ -8,30 +8,30 @@ import { getCurrentLocale } from "@/lib/locale";
 const copy = {
   fr: {
     eyebrow: "Etude de cas",
-    title: "CommerceKit montre le cote commerce et Stripe-ready du boilerplate.",
+    title: "CommerceKit devient une vitrine commerce 3D autonome.",
     intro:
-      "Le projet prouve qu'une meme fondation peut devenir un mini-commerce relie aux autres modules: portail client, evenements, support et usage API.",
+      "Le projet prouve qu'une meme fondation peut devenir une experience commerce premium avec produits superposes en 3D, catalogue, checkout demo et preuve operationnelle.",
     points: [
+      "Scene 3D CSS avec pile de produits et carte checkout flottante.",
       "Catalogue produit structure avec prix en cents et inventaire.",
       "Checkout demo avec calculs de taxes, livraison et total.",
       "Confirmation publique par token pour montrer un parcours client.",
       "Dashboard operations pour commandes, revenu et fulfillment.",
-      "Donnees alignees avec les memes clients et flux que ClientHub, EventPass, SupportDesk Lite et API Meter.",
       "FR/EN, repo public, branches lisibles et tests avant deploiement.",
     ],
     cta: "Tester le checkout",
   },
   en: {
     eyebrow: "Case study",
-    title: "CommerceKit shows the commerce and Stripe-ready side of the boilerplate.",
+    title: "CommerceKit becomes a standalone 3D commerce showcase.",
     intro:
-      "The project proves that one foundation can become a mini commerce product connected to the other modules: client portal, events, support, and API usage.",
+      "The project proves one foundation can become a premium commerce experience with layered 3D products, catalog, demo checkout, and operational proof.",
     points: [
+      "CSS 3D scene with stacked products and a floating checkout card.",
       "Structured product catalog with cents-based prices and inventory.",
       "Demo checkout with tax, shipping, and total calculations.",
       "Public token confirmation to show a customer journey.",
       "Operations dashboard for orders, revenue, and fulfillment.",
-      "Data aligned with the same customers and flows as ClientHub, EventPass, SupportDesk Lite, and API Meter.",
       "FR/EN, public repo, readable branches, and tests before deployment.",
     ],
     cta: "Test checkout",
