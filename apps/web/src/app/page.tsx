@@ -92,6 +92,8 @@ export default async function Home() {
 
             <div className="commerce-scene" aria-label={t.sceneLabel}>
               <div className="commerce-stage">
+                <div className="commerce-shelf commerce-shelf-top" />
+                <div className="commerce-shelf commerce-shelf-bottom" />
                 {demoProducts.slice(0, 4).map((product, index) => (
                   <Link
                     key={product.slug}
@@ -99,9 +101,9 @@ export default async function Home() {
                     className={`commerce-product commerce-product-${index + 1}`}
                     style={{ "--swatch": product.color } as CSSProperties}
                   >
-                    <span className="commerce-product-swatch" />
+                    <span className={`commerce-product-object commerce-product-object-${index + 1}`} />
                     <span className="text-xs uppercase tracking-[0.16em] text-white/55">{product.category}</span>
-                    <span className="mt-3 block text-2xl font-semibold text-white">{product.name}</span>
+                    <span className="mt-2 block text-xl font-semibold text-white">{product.name}</span>
                     <span className="mt-4 inline-flex rounded-full bg-white/10 px-3 py-1 text-sm font-semibold text-white">
                       {formatCurrency(product.priceCents, locale)}
                     </span>
