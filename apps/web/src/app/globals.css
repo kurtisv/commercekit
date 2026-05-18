@@ -72,118 +72,190 @@ body {
   position: relative;
   height: 540px;
   transform-style: preserve-3d;
-  transform: rotateX(56deg) rotateZ(34deg);
+  transform: rotateX(62deg) rotateZ(28deg);
 }
 
-.commerce-shelf {
+.commerce-showroom-wall,
+.commerce-counter,
+.commerce-display,
+.commerce-terminal,
+.commerce-receipt-roll {
   position: absolute;
-  left: 34px;
-  right: 34px;
-  height: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: linear-gradient(180deg, rgba(241, 213, 155, 0.92), rgba(183, 105, 53, 0.72));
-  box-shadow: 0 24px 48px rgba(27, 27, 24, 0.24);
   transform-style: preserve-3d;
 }
 
-.commerce-shelf::after {
-  content: "";
-  position: absolute;
-  inset: 100% 18px auto 18px;
-  height: 52px;
-  background: linear-gradient(180deg, rgba(46, 63, 52, 0.58), rgba(46, 63, 52, 0));
-  transform: rotateX(-90deg);
-  transform-origin: top;
-}
-
-.commerce-shelf-top {
-  top: 176px;
-  transform: translateZ(38px);
-}
-
-.commerce-shelf-bottom {
-  top: 394px;
-  transform: translateZ(32px);
-}
-
-.commerce-product,
-.commerce-checkout-card {
-  position: absolute;
-  display: block;
-  width: 170px;
-  min-height: 230px;
+.commerce-showroom-wall {
+  left: 74px;
+  right: 74px;
+  top: 28px;
+  height: 250px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: linear-gradient(145deg, rgba(46, 63, 52, 0.98), rgba(27, 27, 24, 0.96));
-  padding: 16px;
+  background:
+    radial-gradient(circle at 72% 28%, rgba(241, 213, 155, 0.24), transparent 17rem),
+    linear-gradient(135deg, rgba(46, 63, 52, 0.98), rgba(27, 27, 24, 0.96));
   box-shadow: 0 34px 70px rgba(27, 27, 24, 0.22);
-  transform-style: preserve-3d;
+  transform: translateZ(8px) rotateX(-70deg);
 }
 
-.commerce-product::after,
-.commerce-checkout-card::after {
+.commerce-showroom-wall::before {
   content: "";
   position: absolute;
-  inset: auto 18px -18px 18px;
-  height: 18px;
-  background: rgba(27, 27, 24, 0.32);
-  filter: blur(12px);
+  left: 42px;
+  right: 42px;
+  top: 104px;
+  height: 22px;
+  background: linear-gradient(90deg, rgba(241, 213, 155, 0.9), rgba(183, 105, 53, 0.72));
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.16);
+}
+
+.commerce-counter {
+  left: 40px;
+  right: 40px;
+  bottom: 28px;
+  height: 330px;
+  border: 1px solid rgba(46, 63, 52, 0.12);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(135deg, #fbf7ef, #f1d59b 64%, #b76935);
+  background-size: 52px 52px, 52px 52px, auto;
+  box-shadow: 0 44px 70px rgba(27, 27, 24, 0.16);
+  transform: rotateX(90deg) translateZ(-118px);
+}
+
+.commerce-display {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  width: 150px;
+  min-height: 210px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.commerce-display::before {
+  content: "";
+  position: absolute;
+  inset: auto 16px 0 16px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(27, 27, 24, 0.22);
+  filter: blur(10px);
+  transform: translateZ(-8px);
 }
 
 .commerce-product-object {
   display: block;
-  width: 92px;
-  height: 104px;
-  margin-bottom: 22px;
+  width: 104px;
+  height: 126px;
   border-radius: 18px 18px 12px 12px;
   background: var(--swatch);
   box-shadow:
     inset -18px -18px 26px rgba(0, 0, 0, 0.18),
     inset 12px 12px 22px rgba(255, 255, 255, 0.18),
     0 16px 28px rgba(0, 0, 0, 0.2);
-  transform: translateZ(48px) rotateX(-8deg);
+  transform: translateZ(78px) rotateX(-10deg);
 }
 
 .commerce-product-object-2,
 .commerce-product-object-4 {
-  width: 84px;
-  border-radius: 999px 999px 18px 18px;
+  width: 86px;
+  height: 136px;
+  border-radius: 999px 999px 20px 20px;
 }
 
 .commerce-product-object-3 {
-  width: 112px;
-  height: 84px;
+  width: 128px;
+  height: 86px;
   border-radius: 16px;
 }
 
-.commerce-product-1 {
-  left: 54px;
-  top: 38px;
-  transform: translateZ(132px);
+.commerce-display-label,
+.commerce-display-name,
+.commerce-price-tag {
+  position: relative;
+  z-index: 2;
 }
 
-.commerce-product-2 {
-  left: 246px;
-  top: 42px;
-  transform: translateZ(104px);
+.commerce-display-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
 }
 
-.commerce-product-3 {
-  left: 146px;
-  top: 254px;
-  transform: translateZ(86px);
+.commerce-display-name {
+  max-width: 11rem;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
-.commerce-product-4 {
-  right: 70px;
-  top: 250px;
-  transform: translateZ(124px);
+.commerce-price-tag {
+  border-radius: 999px;
+  background: rgba(46, 63, 52, 0.92);
+  padding: 7px 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-.commerce-checkout-card {
-  right: 44px;
-  bottom: 12px;
+.commerce-display-1 {
+  left: 76px;
+  top: 88px;
+  transform: translateZ(126px);
+}
+
+.commerce-display-2 {
+  left: 248px;
+  top: 52px;
+  transform: translateZ(154px);
+}
+
+.commerce-display-3 {
+  left: 164px;
+  top: 288px;
+  transform: translateZ(98px);
+}
+
+.commerce-display-4 {
+  right: 80px;
+  top: 222px;
+  transform: translateZ(138px);
+}
+
+.commerce-terminal {
+  right: 26px;
+  bottom: 26px;
+  width: 230px;
   min-height: 240px;
-  transform: translateZ(168px) rotateZ(-5deg);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(145deg, rgba(27, 27, 24, 0.98), rgba(46, 63, 52, 0.92));
+  padding: 20px;
+  box-shadow: 0 30px 58px rgba(27, 27, 24, 0.26);
+  transform: translateZ(190px) rotateZ(-7deg) rotateY(-10deg);
+}
+
+.commerce-receipt-roll {
+  left: 54px;
+  bottom: 56px;
+  display: grid;
+  gap: 4px;
+  width: 112px;
+  min-height: 148px;
+  place-items: center;
+  background:
+    repeating-linear-gradient(0deg, #fffdf7 0 14px, #efe6d6 14px 15px);
+  color: #2e3f34;
+  box-shadow: 0 22px 38px rgba(27, 27, 24, 0.16);
+  transform: translateZ(132px) rotateZ(8deg);
+}
+
+.commerce-receipt-roll span {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
@@ -193,7 +265,7 @@ body {
 
   .commerce-stage {
     height: 430px;
-    transform: rotateX(56deg) rotateZ(32deg) scale(0.68);
+    transform: rotateX(62deg) rotateZ(28deg) scale(0.66);
     transform-origin: center;
   }
 }

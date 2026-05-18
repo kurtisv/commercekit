@@ -92,24 +92,24 @@ export default async function Home() {
 
             <div className="commerce-scene" aria-label={t.sceneLabel}>
               <div className="commerce-stage">
-                <div className="commerce-shelf commerce-shelf-top" />
-                <div className="commerce-shelf commerce-shelf-bottom" />
+                <div className="commerce-showroom-wall" />
+                <div className="commerce-counter" />
                 {demoProducts.slice(0, 4).map((product, index) => (
                   <Link
                     key={product.slug}
                     href={`/products/${product.slug}`}
-                    className={`commerce-product commerce-product-${index + 1}`}
+                    className={`commerce-display commerce-display-${index + 1}`}
                     style={{ "--swatch": product.color } as CSSProperties}
                   >
                     <span className={`commerce-product-object commerce-product-object-${index + 1}`} />
-                    <span className="text-xs uppercase tracking-[0.16em] text-white/55">{product.category}</span>
-                    <span className="mt-2 block text-xl font-semibold text-white">{product.name}</span>
-                    <span className="mt-4 inline-flex rounded-full bg-white/10 px-3 py-1 text-sm font-semibold text-white">
+                    <span className="commerce-display-label">{product.category}</span>
+                    <span className="commerce-display-name">{product.name}</span>
+                    <span className="commerce-price-tag">
                       {formatCurrency(product.priceCents, locale)}
                     </span>
                   </Link>
                 ))}
-                <div className="commerce-checkout-card">
+                <div className="commerce-terminal">
                   <p className="text-xs uppercase tracking-[0.16em] text-white/55">Checkout</p>
                   <p className="mt-3 text-3xl font-semibold text-white">{formatCurrency(50360, locale)}</p>
                   <div className="mt-5 grid gap-2">
@@ -120,6 +120,10 @@ export default async function Home() {
                       </div>
                     ))}
                   </div>
+                </div>
+                <div className="commerce-receipt-roll">
+                  <span>receipt</span>
+                  <strong>CK-008</strong>
                 </div>
               </div>
             </div>
