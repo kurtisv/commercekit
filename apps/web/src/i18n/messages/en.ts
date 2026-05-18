@@ -1,7 +1,7 @@
 const en = {
   app: {
-    name: "KV Web Starter",
-    tagline: "Premium modular boilerplate for marketing, booking, and SaaS/API projects.",
+    name: "CommerceKit",
+    tagline: "Commerce module for services, orders, revenue, and project-linked checkout.",
   },
   nav: {
     services: "Services",

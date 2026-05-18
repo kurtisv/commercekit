@@ -52,6 +52,8 @@ const copy = {
       "Les commandes utilisent les memes clients que les autres modules KV Portfolio: un projet suivi dans ClientHub, un atelier gere dans EventPass ou un ticket prioritaire dans SupportDesk peut devenir un achat CommerceKit.",
     ecosystemSource: "Source",
     ecosystemOutcome: "Resultat commerce",
+    closeText: "Catalogue, checkout, commandes, dashboard, courriel et structure Stripe-ready.",
+    proofButton: "Voir la preuve technique",
   },
   en: {
     eyebrow: "Project 6 - Stripe-ready commerce",
@@ -86,6 +88,8 @@ const copy = {
       "Orders use the same customers as the other KV Portfolio modules: a ClientHub project, an EventPass workshop, or a priority SupportDesk request can become a CommerceKit purchase.",
     ecosystemSource: "Source",
     ecosystemOutcome: "Commerce result",
+    closeText: "Catalog, checkout, orders, dashboard, email, and Stripe-ready structure.",
+    proofButton: "View technical proof",
   },
 };
 
@@ -253,12 +257,12 @@ export default async function Home() {
           <div className="mx-auto flex max-w-7xl flex-col gap-5 px-6 py-12 md:flex-row md:items-center md:justify-between">
             <div>
               <h2 className="text-3xl font-semibold">CommerceKit</h2>
-              <p className="mt-2 text-muted-foreground">Catalog, checkout, orders, dashboard, email, Stripe-ready.</p>
+              <p className="mt-2 text-muted-foreground">{t.closeText}</p>
             </div>
             <Button asChild>
               <Link href="/case-study">
                 <ShieldCheck className="size-4" />
-                {locale === "fr" ? "Voir la preuve technique" : "View technical proof"}
+                {t.proofButton}
               </Link>
             </Button>
           </div>

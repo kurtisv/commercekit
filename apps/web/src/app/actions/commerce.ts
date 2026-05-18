@@ -152,8 +152,8 @@ export async function createOrderFromEcosystemEvent(formData: FormData) {
   const customerEmail = event.customerEmail || text(payload.customerEmail) || text(payload.email);
   if (!customerEmail) return;
   const projectId = text(payload.projectId) || event.entityId || undefined;
-  const projectName = text(payload.projectName) || event.title;
-  const quoteTotalCents = numberValue(payload.quoteTotalCents) ?? numberValue(payload.totalCents) ?? 0;
+  const projectName = text(payload.projectName) || text(payload.projectType) || event.title;
+  const quoteTotalCents = numberValue(payload.quoteTotalCents) ?? numberValue(payload.quoteTotal) ?? numberValue(payload.totalCents) ?? 0;
   const orderPriceCents = Math.max(0, Math.round(quoteTotalCents));
   const publicToken = `ck_${nanoid(18)}`;
   const productSlug = `ecosystem-${event.id.slice(0, 10)}`;
@@ -162,7 +162,7 @@ export async function createOrderFromEcosystemEvent(formData: FormData) {
     where: { slug: productSlug },
     update: {
       name: projectName,
-      category: "Ecosystem service",
+      category: "ClientHub service",
       description: event.description ?? event.title,
       priceCents: orderPriceCents,
       inventory: 1,
@@ -173,7 +173,7 @@ export async function createOrderFromEcosystemEvent(formData: FormData) {
     create: {
       slug: productSlug,
       name: projectName,
-      category: "Ecosystem service",
+      category: "ClientHub service",
       description: event.description ?? event.title,
       priceCents: orderPriceCents,
       inventory: 1,
@@ -231,7 +231,7 @@ export async function createOrderFromEcosystemEvent(formData: FormData) {
   await publishEcosystemEvent({
     flowId: event.flowId,
     sourceApp: "commercekit",
-    targetApps: ["eventpass", "supportdesk-lite", "api-meter"],
+    targetApps: ["supportdesk-lite", "api-meter"],
     eventType: "order.created",
     entityType: "order",
     entityId: order.id,
@@ -239,14 +239,19 @@ export async function createOrderFromEcosystemEvent(formData: FormData) {
     customerEmail,
     title: "Commande CommerceKit creee depuis le parcours reel",
     description: `${customerName} a une commande ${order.orderNumber} liee a ${projectName}.`,
-    payload: {
-      orderNumber: order.orderNumber,
-      totalCents: order.totalCents,
-      projectId,
-      projectName,
-      sourceApp: event.sourceApp,
-      sourceEventId: event.id,
-      flowId: event.flowId,
+      payload: {
+        orderNumber: order.orderNumber,
+        totalCents: order.totalCents,
+        projectId,
+        projectName,
+        serviceName: product.name,
+        quoteNumber: text(payload.quoteNumber) || undefined,
+        quoteTotalCents,
+        consultantName: text(payload.consultantName) || undefined,
+        phone: text(payload.phone) || undefined,
+        sourceApp: event.sourceApp,
+        sourceEventId: event.id,
+        flowId: event.flowId,
     },
     priority: "NORMAL",
     actionLabel: "Voir la commande",
@@ -263,24 +268,24 @@ export async function createOrderFromEcosystemEvent(formData: FormData) {
     customerEmail,
     title: "Commande CommerceKit creee depuis le parcours reel",
     description: `${customerName} a une commande ${order.orderNumber} liee a ${projectName}.`,
-    payload: {
-      orderNumber: order.orderNumber,
-      totalCents: order.totalCents,
-      projectId,
-      projectName,
-      sourceApp: event.sourceApp,
-      sourceEventId: event.id,
-      flowId: event.flowId,
+      payload: {
+        orderNumber: order.orderNumber,
+        totalCents: order.totalCents,
+        projectId,
+        projectName,
+        serviceName: product.name,
+        quoteNumber: text(payload.quoteNumber) || undefined,
+        quoteTotalCents,
+        consultantName: text(payload.consultantName) || undefined,
+        phone: text(payload.phone) || undefined,
+        sourceApp: event.sourceApp,
+        sourceEventId: event.id,
+        flowId: event.flowId,
     },
     priority: "NORMAL",
   };
 
   await Promise.all([
-    sendEcosystemHandoff(process.env.EVENTPASS_INGEST_URL ?? "https://eventpass-nine.vercel.app/api/ecosystem/ingest", {
-      ...downstreamEvent,
-      actionLabel: "Creer le billet EventPass",
-      actionUrl: "/dashboard",
-    }),
     sendEcosystemHandoff(process.env.SUPPORTDESK_INGEST_URL ?? "https://supportdesk-lite-jet.vercel.app/api/ecosystem/ingest", {
       ...downstreamEvent,
       actionLabel: "Creer le ticket SupportDesk",
