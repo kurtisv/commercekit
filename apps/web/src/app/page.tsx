@@ -9,16 +9,16 @@ import { getCurrentLocale } from "@/lib/locale";
 
 const copy = {
   fr: {
-    eyebrow: "Kit commerce premium 3D",
-    title: "Un flux commerce complet mis en scene comme un produit premium.",
+    eyebrow: "Visuel commerce premium",
+    title: "Un flux commerce complet montre comme un objet produit, stable et premium.",
     intro:
-      "CommerceKit montre la chaine complete en un seul hero: produit, checkout, paiement, commande et fulfillment sont lisibles comme un kit commercial pret a vendre.",
+      "CommerceKit montre la chaine complete en un seul hero: produit, checkout, paiement, commande et fulfillment sont lisibles comme un rendu produit clair et recruteur-friendly.",
     primary: "Tester le checkout",
     secondary: "Voir le catalogue",
     sceneLabel: "Product stack",
-    proofTitle: "Le commerce n est pas seulement montre. Il est mis en produit.",
+    proofTitle: "Le hero lit comme un produit commerce, pas comme une scene d objets empiles.",
     proof:
-      "Le recruteur comprend immediatement qu il ne s agit pas d une simple vitrine: CommerceKit couvre le packaging produit, le passage au checkout, le statut paid et l execution fulfillment dans une meme narration.",
+      "Le recruteur comprend immediatement qu il ne s agit pas d une simple vitrine: CommerceKit relie packaging, checkout, paiement et fulfillment avec une hierarchie visuelle plus nette et un objet principal vraiment dominant.",
     modules: [
       { title: "Catalogue", text: "Produits actifs, inventaire, prix en cents et categories.", icon: Boxes },
       { title: "Checkout", text: "Flux demo clair avec totaux, taxes, livraison et futur Stripe Checkout.", icon: CreditCard },
@@ -29,16 +29,16 @@ const copy = {
     proofButton: "Voir la preuve technique",
   },
   en: {
-    eyebrow: "3D premium commerce kit",
-    title: "A complete commerce flow staged like a premium product kit.",
+    eyebrow: "Premium commerce visual",
+    title: "A complete commerce flow shown as a stable, premium product object.",
     intro:
-      "CommerceKit shows the whole chain in one hero: product, checkout, payment, order, and fulfillment read as one sellable commerce system.",
+      "CommerceKit shows the whole chain in one hero: product, checkout, payment, order, and fulfillment read as one clear, recruiter-friendly product render.",
     primary: "Test checkout",
     secondary: "View catalog",
     sceneLabel: "Product stack",
-    proofTitle: "Commerce is not only displayed. It is productized.",
+    proofTitle: "The hero reads as a commerce product, not a stack of floating props.",
     proof:
-      "Recruiters can immediately see that this is more than a storefront: CommerceKit covers product packaging, the checkout handoff, paid order state, and fulfillment execution in a single narrative.",
+      "Recruiters can immediately see that this is more than a storefront: CommerceKit ties packaging, checkout, payment, and fulfillment together with a sharper hierarchy and one truly dominant hero object.",
     modules: [
       { title: "Catalog", text: "Active products, inventory, prices in cents, and categories.", icon: Boxes },
       { title: "Checkout", text: "Clear demo flow with totals, tax, shipping, and future Stripe Checkout.", icon: CreditCard },

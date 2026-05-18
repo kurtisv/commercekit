@@ -1,0 +1,83 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="210" y1="110" x2="1390" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A1F17"/>
+      <stop offset="0.46" stop-color="#2F241A"/>
+      <stop offset="1" stop-color="#1D1712"/>
+    </linearGradient>
+    <linearGradient id="box" x1="322" y1="278" x2="782" y2="842" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D2A06A"/>
+      <stop offset="1" stop-color="#A77442"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="300" y1="238" x2="796" y2="378" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E5B985"/>
+      <stop offset="1" stop-color="#C8925C"/>
+    </linearGradient>
+    <linearGradient id="card" x1="944" y1="366" x2="1242" y2="564" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20251F"/>
+      <stop offset="1" stop-color="#171B16"/>
+    </linearGradient>
+    <filter id="shadow" x="186" y="174" width="1220" height="880" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="30"/>
+      <feGaussianBlur stdDeviation="34"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0784314 0 0 0 0 0.0588235 0 0 0 0 0.0392157 0 0 0 0.34 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_0"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_0" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1200" rx="52" fill="url(#bg)"/>
+  <circle cx="260" cy="228" r="210" fill="#F1D59B" fill-opacity="0.14"/>
+  <circle cx="1250" cy="252" r="210" fill="#A6B195" fill-opacity="0.12"/>
+  <circle cx="1282" cy="936" r="190" fill="#A76F36" fill-opacity="0.1"/>
+
+  <g filter="url(#shadow)">
+    <g transform="rotate(-7 520 614)">
+      <rect x="290" y="330" width="438" height="332" rx="34" fill="url(#box)"/>
+      <rect x="310" y="302" width="444" height="46" rx="18" fill="url(#lid)"/>
+      <rect x="388" y="396" width="246" height="162" rx="28" fill="#EED7B5" fill-opacity="0.88"/>
+      <text x="430" y="446" fill="#312215" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="4">CLIENT LAUNCH KIT</text>
+      <text x="456" y="498" fill="#6B4A2B" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="600">Premium product box</text>
+    </g>
+
+    <g transform="rotate(-8 1070 470)">
+      <rect x="924" y="358" width="282" height="186" rx="28" fill="url(#card)"/>
+      <rect x="960" y="396" width="164" height="24" rx="12" fill="#67765D" fill-opacity="0.56"/>
+      <text x="964" y="454" fill="#F8F5EC" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Checkout ready</text>
+      <text x="964" y="504" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Paid</text>
+      <text x="1038" y="552" fill="#E1D0B2" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Stripe-ready</text>
+    </g>
+
+    <g transform="rotate(6 1170 720)">
+      <rect x="1062" y="590" width="172" height="292" rx="18" fill="#FFF6E8"/>
+      <text x="1092" y="646" fill="#775D3F" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">CK-2026-0001</text>
+      <text x="1092" y="706" fill="#2F241A" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Paid</text>
+      <text x="1092" y="758" fill="#2F241A" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Fulfillment</text>
+      <text x="1092" y="812" fill="#6F5A44" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600">Client Launch Kit</text>
+    </g>
+
+    <g transform="rotate(6 808 754)">
+      <rect x="716" y="648" width="188" height="142" rx="28" fill="#7E8F72"/>
+      <rect x="700" y="630" width="204" height="26" rx="12" fill="#95A588"/>
+      <text x="740" y="714" fill="#182015" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Workshop Seat</text>
+      <text x="772" y="754" fill="#182015" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Bundle</text>
+    </g>
+  </g>
+
+  <rect x="302" y="874" width="232" height="62" rx="31" fill="#FFF7E7" fill-opacity="0.08" stroke="#F1D59B" stroke-opacity="0.22"/>
+  <text x="352" y="914" fill="#FFF3D7" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Stripe-ready</text>
+  <rect x="548" y="874" width="206" height="62" rx="31" fill="#FFF7E7" fill-opacity="0.08" stroke="#F1D59B" stroke-opacity="0.18"/>
+  <text x="592" y="914" fill="#FFF3D7" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">CK-2026-0001</text>
+
+  <path d="M312 1004H1280" stroke="#F1D59B" stroke-opacity="0.22" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="372" cy="1004" r="18" fill="#F1D59B"/>
+  <circle cx="646" cy="1004" r="18" fill="#F1D59B"/>
+  <circle cx="930" cy="1004" r="18" fill="#F1D59B"/>
+  <circle cx="1206" cy="1004" r="18" fill="#FFFFFF" fill-opacity="0.84"/>
+  <text x="330" y="1056" fill="#F7EAD3" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">CART</text>
+  <text x="580" y="1056" fill="#F7EAD3" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">CHECKOUT</text>
+  <text x="888" y="1056" fill="#F7EAD3" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">PAID</text>
+  <text x="1116" y="1056" fill="#F7EAD3" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">FULFILLMENT</text>
+</svg>
