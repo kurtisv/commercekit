@@ -1,12 +1,11 @@
 import Link from "next/link";
-import type { CSSProperties } from "react";
-import { ArrowRight, BarChart3, Boxes, CheckCircle2, CreditCard, PackageCheck, ReceiptText, ShieldCheck } from "lucide-react";
+import { ArrowRight, BarChart3, Boxes, CreditCard, PackageCheck, ReceiptText, ShieldCheck } from "lucide-react";
 
 import { MarketingPageShell } from "@/components/marketing/page-shell";
+import { CommerceKitScene } from "@/components/three/CommerceKitScene";
 import { Button } from "@/components/ui/button";
-import { demoProducts, productStats } from "@/data/commerce";
+import { productStats } from "@/data/commerce";
 import { getCurrentLocale } from "@/lib/locale";
-import { formatCurrency } from "@/lib/money";
 
 const copy = {
   fr: {
@@ -90,43 +89,7 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="commerce-scene" aria-label={t.sceneLabel}>
-              <div className="commerce-stage">
-                <div className="commerce-showroom-wall" />
-                <div className="commerce-counter" />
-                {demoProducts.slice(0, 4).map((product, index) => (
-                  <Link
-                    key={product.slug}
-                    href={`/products/${product.slug}`}
-                    className={`commerce-display commerce-display-${index + 1}`}
-                    style={{ "--swatch": product.color } as CSSProperties}
-                  >
-                    <span className={`commerce-product-object commerce-product-object-${index + 1}`} />
-                    <span className="commerce-display-label">{product.category}</span>
-                    <span className="commerce-display-name">{product.name}</span>
-                    <span className="commerce-price-tag">
-                      {formatCurrency(product.priceCents, locale)}
-                    </span>
-                  </Link>
-                ))}
-                <div className="commerce-terminal">
-                  <p className="text-xs uppercase tracking-[0.16em] text-white/55">Checkout</p>
-                  <p className="mt-3 text-3xl font-semibold text-white">{formatCurrency(50360, locale)}</p>
-                  <div className="mt-5 grid gap-2">
-                    {["Cart", "Tax", "Shipping", "Ready"].map((item) => (
-                      <div key={item} className="flex items-center justify-between rounded-lg bg-white/[0.08] px-3 py-2 text-sm text-white/72">
-                        <span>{item}</span>
-                        <CheckCircle2 className="size-4 text-[#f1d59b]" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="commerce-receipt-roll">
-                  <span>receipt</span>
-                  <strong>CK-008</strong>
-                </div>
-              </div>
-            </div>
+            <CommerceKitScene />
           </div>
         </section>
 
